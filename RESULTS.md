@@ -17,11 +17,11 @@
     Change: 400
     Delete: 400
 ## Part B
-1.
-2.
+1. Two failures a real-server test can find: wrong server configuration or deployment (for example the load balancer and cookie problem), and problems in how the parts work together (for example a 500 from a database or backend error). Unit tests with stubs are still worth writing because they are fast, run offline and point to the exact function that broke.
+2. Each test makes its own user so that no test depends on another test or on data that other students change. In Project 2 I will create test data with unique names
 3.
-4.
-5.
-6.
-7.
-8.
+4. The block "all three tools excluded" revealed the defect. A 500 with an empty body gives the app no reason and no way to tell a client mistake from a server crash, while a 400 with a message can be shown to the user. The test stays as xfail so the defect stays visible
+5. Base choice: 1 + 2 + 3 + 1 + 2 = 9 tests. All combinations: 3 × 4 × 2 × 3 = 72 tests.
+6. I got read 404, change 400, delete 400. I would expect 403.
+7. The server returned a list of 50 ratings (HTTP 200) for a made-up token that no user ever got by logging in. This is a defect and on a real system a stranger could guess or invent a token and read other people's private data, and possibly change it.
+8. An API test checks speed, status codes and exact data faster and more reliably than a UI test. Only a test through the web pages can check what the user sees: layout, buttons, text and the browser behavior.
